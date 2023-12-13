@@ -1,0 +1,16 @@
+.hidden {
+  display: none;
+}
+.guide {
+  pointer-events: none;
+  transition: 200ms ease-in;
+}
+.tooltip {
+    color: #222;
+    background-color: #fff;
+    padding: .5em;
+    text-shadow: #f5f5f5 0 1px 0;
+    border-radius: 2px;
+    opacity: 0.9;
+    position: absolute;
+}
