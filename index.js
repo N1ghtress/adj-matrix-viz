@@ -71,15 +71,12 @@ const promises = Promise.all([
     matrixViz = svg.selectAll("rect")
         .data(adj_mat)
         .join("rect")
-        .attr("width", size)
-        .attr("height", size)
         .attr("x", (d, i) => {
             return d.x * size
         })
         .attr("y", (d, i) => {
             return d.y * size
         })
-        .style("fill", d => color(d.sharedfollowers))
         .on("mousemove", (e, d) => {
             let pos = [e.x, e.y]
             hGuide.classed("hidden", false)
@@ -93,6 +90,11 @@ const promises = Promise.all([
         .on("mouseout", (e, d) => {
             tooltip.classed("hidden", true)
         })
+        .style("fill", d => color(d.sharedfollowers))
+        .transition()
+        .duration(500)
+        .attr("width", size)
+        .attr("height", size)
 
     const scaleSize = nodes.length * size
     

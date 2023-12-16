@@ -14,3 +14,10 @@
     opacity: 0.9;
     position: absolute;
 }
+.elem {
+    transition: 0.5s ease-in-out;
+}
+.growing {
+    width: 0%;
+    height: 0%;
+}
