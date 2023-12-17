@@ -1,4 +1,5 @@
 const margin = { top: 50, right: 30, bottom: 20, left: 50 }
+const animX = 50, animY = 50
 const width = 880
 const height = 880
 const mat_width = 800
@@ -72,10 +73,10 @@ const promises = Promise.all([
         .data(adj_mat)
         .join("rect")
         .attr("x", (d, i) => {
-            return d.x * size
+           return d.x * size + animX
         })
         .attr("y", (d, i) => {
-            return d.y * size
+            return d.y * size + animY
         })
         .on("mousemove", (e, d) => {
             let pos = [e.x, e.y]
@@ -90,11 +91,13 @@ const promises = Promise.all([
         .on("mouseout", (e, d) => {
             tooltip.classed("hidden", true)
         })
-        .style("fill", d => color(d.sharedfollowers))
+        .style("fill", d => "#fff")
         .transition()
-        .duration(500)
+        .duration(1500)
+        .style("fill", d => color(d.sharedfollowers))
         .attr("width", size)
         .attr("height", size)
+        .attr("transform", "translate(-50, -50)")
 
     const scaleSize = nodes.length * size
     
